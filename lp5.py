@@ -3,8 +3,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_iris
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score,classification_report
-
-
+import matplotlib.pyplot as plt
+from sklearn import tree 
 data=load_iris()
 
 x=data.data
@@ -21,3 +21,7 @@ y_pred=clf.predict(x_test)
 
 print(accuracy_score(y_test,y_pred))
 print(classification_report(y_test,y_pred))
+
+plt.figure(figsize=(12,8))
+tree.plot_tree(clf,feature_names=data.feature_names,class_names=data.target_names,filled=True)
+plt.show()
